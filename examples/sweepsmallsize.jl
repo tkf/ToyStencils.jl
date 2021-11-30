@@ -39,7 +39,27 @@ trials = map(np:-1:max(1, np - 5)) do p
     bench = @benchmarkable(
         ToyStencils.stencil!(prob; smallsize = 2^$p, basesize = Inf, timewindow = Inf)
     )
-    t = BenchPerf.run(bench; detailed = 2)
+    t = BenchPerf.run(
+        bench;
+        event = [
+            "branch-misses",
+            "branches",
+            "L1-dcache-load-misses",
+            "L1-dcache-loads",
+            "L1-icache-load-misses",
+            "L1-icache-loads",
+            "LLC-load-misses",
+            "LLC-loads",
+            "dTLB-load-misses",
+            "dTLB-loads",
+            "iTLB-load-misses",
+            "iTLB-loads",
+            "stalled-cycles-frontend",
+            "stalled-cycles-backend",
+            "cycles",
+            "instructions",
+        ],
+    )
     print("  ")
     show(IOContext(stdout, :typeinfo => typeof(t.benchmark)), t.benchmark)
     print(" ")
