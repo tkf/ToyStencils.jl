@@ -4,7 +4,10 @@ JULIA_CMD = $(JULIA) --startup-file=no
 PROJECT_ROOT = $(shell pwd)
 JULIA_MAIN = JULIA_LOAD_PATH=@ $(JULIA_CMD) --project=$(PROJECT_ROOT)/test/environments/main
 
-.PHONY: test* resolve environments
+.PHONY: test* resolve environments sweepsmallsize
+
+sweepsmallsize: test/environments/main/Manifest.toml
+	$(JULIA_MAIN) examples/sweepsmallsize.jl
 
 test-all: test test-debug test-extras
 test: test-main
@@ -15,7 +18,7 @@ test-main test-debug: test-%: test/environments/%/Manifest.toml
 		test/runtests.jl
 
 test-extras: test/environments/main/Manifest.toml
-	$(JULIA_MAIN) examples/sweepsmallsize.jl
+	VERBOSE=true $(JULIA_MAIN) examples/sweepsmallsize.jl
 	$(JULIA_MAIN) examples/plot.jl
 
 MANIFESTS = \

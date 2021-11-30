@@ -93,7 +93,7 @@ for (n, t) in trials
     println()
 end
 
-if !isinteractive()
+if lowercase(get(ENV, "VERBOSE", "false")) == "true"
     for (n, t) in trials
         @show n
         display(t)
