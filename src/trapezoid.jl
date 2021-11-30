@@ -115,7 +115,8 @@ function trapezoid_basecase!(f, us, ts, xs, dx0, dx1)
     x0 = first(xs)
     x1 = last(xs)
     for t in ts
-        @simd ivdep for x in x0:x1
+        # @simd ivdep for x in x0:x1
+        for x in x0:x1
             @ifdebug assert_us_not_written(us, x, t)
             @inbounds us[x, t] = f(us[x-1, t-1], us[x, t-1], us[x+1, t-1])
         end
