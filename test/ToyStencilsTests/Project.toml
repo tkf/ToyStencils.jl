@@ -1,0 +1,11 @@
+name = "ToyStencilsTests"
+uuid = "86c2100d-3765-405c-965a-5563b8fee3a5"
+authors = ["Takafumi Arakaki <aka.tkf@gmail.com> and contributors"]
+version = "0.1.0-DEV"
+
+[deps]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+ToyStencils = "051b9c3d-276b-4e8d-b946-8c27e87e3f9c"
+
+[compat]
+julia = "1"

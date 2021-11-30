@@ -1,0 +1,11 @@
+name = "ToyStencilsBenchmarks"
+uuid = "1f0bd6cf-c3d0-4d7b-8264-a0cc89330cc2"
+authors = ["Takafumi Arakaki <aka.tkf@gmail.com> and contributors"]
+version = "0.1.0-DEV"
+
+[deps]
+BenchmarkTools = "6e4b80f9-dd63-53aa-95a3-0cdb28fa8baf"
+ToyStencils = "051b9c3d-276b-4e8d-b946-8c27e87e3f9c"
+
+[compat]
+julia = "1"
